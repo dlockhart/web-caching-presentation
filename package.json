@@ -1,0 +1,28 @@
+{
+  "name": "web-caching-presentation",
+  "version": "0.0.1",
+  "description": "Presentation on web caching for prod-dev conference 2015",
+  "main": "dist/app.js",
+  "scripts": {
+    "prebuild": "rimraf dist && mkdir dist",
+    "build:js": "browserify -t reactify ./src/app.js > ./dist/app.js",
+    "build:css": "node-sass ./src/app.scss ./dist/app.css",
+    "build": "npm run build:js && npm run build:css && cpy ./src/index.html ./dist",
+    "test": "eslint src && npm run build"
+  },
+  "author": "Dave Lockhart",
+  "license": "Apache-2.0",
+  "private": true,
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "cpy": "^3.4.1",
+    "eslint": "^1.8.0",
+    "eslint-config-brightspace": "0.0.3",
+    "eslint-plugin-react": "^3.6.3",
+    "node-sass": "^3.4.1",
+    "react": "^0.14.1",
+    "react-dom": "^0.14.1",
+    "reactify": "^1.1.1",
+    "rimraf": "^2.4.3"
+  }
+}

@@ -1,0 +1,46 @@
+{
+	"columns": [
+		{
+			"name": "Browser",
+			"hidden": true
+		},
+		{
+			"name": "ISP"
+		},
+		{
+			"name": "Internet",
+			"hidden": true
+		},
+		{
+			"name": "App Accelerator",
+			"hidden": true
+		},
+		{
+			"name": "App Server",
+			"hidden": true
+		},
+		{
+			"name": "Storage"
+		}
+	],
+	"steps": [
+		{
+			"row": 1,
+			"start": 1,
+			"end": 6,
+			"duration": 100
+		},
+		{
+			"row": 2,
+			"start": 6,
+			"end": 5,
+			"duration": 50
+		},
+		{
+			"row": 2,
+			"start": 5,
+			"end": 1,
+			"duration": 20
+		}
+	]
+};

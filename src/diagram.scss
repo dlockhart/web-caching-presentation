@@ -1,0 +1,14 @@
+@import 'step.scss';
+
+.column {
+	border-right: 1px solid #666666;
+	float: left;
+	height: 300px;
+	text-align: center;
+}
+
+svg {
+	position: absolute;
+	top: 50px;
+	left: 0;
+}
