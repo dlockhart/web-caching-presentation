@@ -15,7 +15,7 @@ var step = React.createClass({
 		} else if (dir === 'L' && data.end !== 1) {
 			x2++;
 		}
-		var y = data.row * 100 - 50;
+		var y = data.row * 100;
 
 		var className = 'lineArrow' + dir;
 		var style = {

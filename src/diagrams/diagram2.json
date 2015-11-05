@@ -1,0 +1,52 @@
+{
+	"columns": [
+		{
+			"name": "Browser",
+		},
+		{
+			"name": "ISP"
+		},
+		{
+			"name": "Internet",
+		},
+		{
+			"name": "App Accelerator",
+			"hidden": true
+		},
+		{
+			"name": "App Server",
+		},
+		{
+			"name": "Storage"
+		}
+	],
+	"steps": [
+		{
+			"row": 1,
+			"start": 1,
+			"end": 6,
+			"label": "GET profile.html",
+			"duration": 100
+		},
+		{
+			"row": 2,
+			"start": 6,
+			"end": 5,
+			"label": "query DB",
+			"duration": 50
+		},
+		{
+			"row": 2,
+			"start": 5,
+			"end": 4,
+			"label": "render page",
+			"duration": 20
+		},
+		{
+			"row": 2,
+			"start": 4,
+			"end": 1,
+			"duration": 20
+		}
+	]
+};

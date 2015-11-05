@@ -1,15 +1,18 @@
+@import 'column.scss';
 @import 'step.scss';
+@import 'headers.scss';
+@import 'markers.scss';
 
-.column {
-	border-right: 1px solid #eeeeee;
+.steps {
 	float: left;
-	height: 300px;
-	padding-top: 5px;
-	text-align: center;
+	position: relative;
+	width: 80%;
 }
 
 svg {
+	height: 100%;
 	position: absolute;
-	top: 50px;
+	top: 0;
 	left: 0;
+	width: 100%;
 }
