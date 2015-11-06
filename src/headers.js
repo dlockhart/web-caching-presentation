@@ -21,7 +21,7 @@ var headers = React.createClass({
 					color: h.new ? 'red' : null
 				};
 				return <li key={h.key}>
-					<span style={style}>{h.key}:<br /> {h.value}</span>
+					<span style={style}><strong>{h.key}:</strong><br /> {h.value}</span>
 				</li>;
 			})}
 			</ul>
