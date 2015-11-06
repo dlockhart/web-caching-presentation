@@ -1,26 +1,33 @@
 {
+	"name": "Diagram 1",
 	"columns": [
 		{
 			"name": "Browser",
+			"image": "chrome.png",
 			"hidden": true
 		},
 		{
-			"name": "ISP"
+			"name": "ISP",
+			"image": "isp.png",
 		},
 		{
 			"name": "Internet",
+			"image": "internet.png",
 			"hidden": true
 		},
 		{
 			"name": "App Accelerator",
+			"image": "nginx.png",
 			"hidden": true
 		},
 		{
 			"name": "App Server",
+			"image": "server.png",
 			"hidden": true
 		},
 		{
-			"name": "Storage"
+			"name": "Storage",
+			"image": "storage.png",
 		}
 	],
 	"steps": [
