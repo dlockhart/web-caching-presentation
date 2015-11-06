@@ -8,7 +8,8 @@
     "build:js": "browserify -t reactify ./src/app.js > ./dist/app.js",
     "build:css": "node-sass ./src/app.scss ./dist/app.css",
     "build:images": "cpy ./src/images/* ./dist/images",
-    "build": "npm run build:js && npm run build:css && cpy ./src/index.html ./dist && npm run build:images",
+    "build:html": "cpy ./src/*.html ./dist",
+    "build": "npm run build:js && npm run build:css && npm run build:html && npm run build:images",
     "test": "eslint src && npm run build"
   },
   "author": "Dave Lockhart",
