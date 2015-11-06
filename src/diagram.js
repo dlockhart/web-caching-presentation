@@ -75,6 +75,7 @@ var diagram = React.createClass({
 		var step = this.state.step;
 		return <div className="diagram">
 			<div ref="steps" className="steps">
+				<h1>{this.props.data.name}</h1>
 				<svg>
 					<Markers />
 					{this.props.data.columns.map(function(c, index) {
