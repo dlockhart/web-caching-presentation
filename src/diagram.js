@@ -79,8 +79,9 @@ var diagram = React.createClass({
 				<svg>
 					<Markers />
 					{this.props.data.columns.map(function(c, index) {
-						return <Column key={index} index={index} width={colWidth} name={c.name} hidden={hiddenCols[index] === true} isLast={index === cols - 1} />;
+						return <Column key={index} index={index} width={colWidth} name={c.name} image={c.image} hidden={hiddenCols[index] === true} isLast={index === cols - 1} />;
 					})}
+					<line className="sep" x1="0" y1="120" x2="100%" y2="120" />
 					{this.props.data.steps.map(function(s, index) {
 						var isVisible = index < step;
 						return <Step key={index} data={s} cols={cols} isVisible={isVisible} />;
