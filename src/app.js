@@ -8,12 +8,16 @@ var slides = [
 		<h1>Web Caching</h1>
 		<h2>Daryl McMillan and Dave Lockhart</h2>
 	</Slide>,
-	<Diagram data={require('./diagrams/diagram1.json')} />,
+	<Slide>
+		<Diagram data={require('./diagrams/diagram1.json')} />
+	</Slide>,
 	<Slide>
 		<h1>cache-control header</h1>
 	</Slide>,
-	<Diagram data={require('./diagrams/diagram2.json')} />,
-	<Slide>Last Slide</Slide>
+	<Slide>
+		<Diagram data={require('./diagrams/diagram2.json')} />
+	</Slide>,
+	<Slide centre="true"><h1>Last Slide</h1></Slide>
 ];
 
 var Application = React.createClass({
@@ -27,33 +31,48 @@ var Application = React.createClass({
 		switch (e.keyCode) {
 			// up
 			case 38:
-				this.prev();
+				this.prevSlide();
 				break;
 			// down
 			case 40:
-				this.next();
+				this.nextSlide();
+				break;
+			// left
+			case 37:
+				if (this.state.stepNum > 0) {
+					this.setState({stepNum: Math.max(0, --this.state.stepNum)});
+				}
+				break;
+			// right
+			case 39:
+				this.setState({stepNum: ++this.state.stepNum});
 				break;
 		}
 	},
-	next: function() {
+	nextSlide: function() {
 		var slideNum = Math.min(this.state.slideNum + 1, slides.length - 1);
 		if (slideNum !== this.state.slideNum) {
-			this.setState({slideNum: slideNum});
+			this.setState({slideNum: slideNum, stepNum: 0});
 		}
 	},
-	prev: function() {
+	prevSlide: function() {
 		var slideNum = Math.max(0, this.state.slideNum - 1);
 		if (slideNum !== this.state.slideNum) {
-			this.setState({slideNum: slideNum});
+			this.setState({slideNum: slideNum, stepNum: 0});
 		}
 	},
 	getInitialState: function() {
 		return {
-			slideNum: 0
+			slideNum: 0,
+			stepNum: 0
 		};
 	},
 	render: function() {
-		return slides[this.state.slideNum];
+		var slide = React.cloneElement(
+			slides[this.state.slideNum],
+			{stepNum: this.state.stepNum}
+		);
+		return slide;
 	}
 });
 
