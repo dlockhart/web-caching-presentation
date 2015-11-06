@@ -1,7 +1,7 @@
 .lineArrowR, .lineArrowL {
 	fill: none;
 	stroke: #6666ff;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 .lineArrowR {
 	marker-start: url(#markerCircle);
@@ -10,4 +10,8 @@
 .lineArrowL {
 	marker-start: url(#markerCircle);
 	marker-end: url(#markerArrowL);
+}
+
+.step text {
+	font-size: 22px;
 }

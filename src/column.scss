@@ -1,4 +1,9 @@
-line.col-sep {
+.column text {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.column line {
 	fill: none;
 	stroke: #eeeeee;
 	stroke-width: 1;

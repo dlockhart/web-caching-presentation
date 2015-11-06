@@ -15,7 +15,7 @@ var step = React.createClass({
 		} else if (dir === 'L' && data.end !== 1) {
 			x2++;
 		}
-		var y = data.row * 100;
+		var y = data.row * 170;
 
 		var className = 'lineArrow' + dir;
 		var style = {
@@ -25,7 +25,7 @@ var step = React.createClass({
 		var label = null;
 		if (data.label) {
 			var labelX = (x2 - x1) / 2 + x1;
-			label = <text x={labelX + '%'} y={y - 8} textAnchor="middle">
+			label = <text x={labelX + '%'} y={y - 14} textAnchor="middle">
 				{data.label}
 			</text>;
 		}
@@ -33,12 +33,12 @@ var step = React.createClass({
 		var duration = null;
 		if (data.duration) {
 			var durationX = (x2 - x1) / 2 + x1;
-			duration = <text x={durationX + '%'} y={y + 17} textAnchor="middle">
+			duration = <text x={durationX + '%'} y={y + 19} textAnchor="middle">
 				{data.duration + 'ms'}
 			</text>;
 		}
 
-		return <g style={style}>
+		return <g style={style} className="step">
 				{label}
 				<line ref="line" className={className} x1={x1 + '%'} y1={y} x2={x2 + '%'} y2={y} />
 				{duration}
