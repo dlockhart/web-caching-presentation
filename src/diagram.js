@@ -73,6 +73,18 @@ var diagram = React.createClass({
 		var hiddenCols = this.state.cols;
 		var colWidth = Math.floor(100 / cols);
 		var step = this.state.step;
+
+		var headers = [];
+		for (var i = 0; i < step; i++) {
+			if (this.props.data.steps[i].headers) {
+				for (var j = 0; j < this.props.data.steps[i].headers.length; j++) {
+					var header = this.props.data.steps[i].headers[j];
+					header.new = (step - 1 === i);
+					headers.push(header);
+				}
+			}
+		}
+
 		return <div className="diagram">
 			<div ref="steps" className="steps">
 				<h1>{this.props.data.name}</h1>
@@ -88,7 +100,7 @@ var diagram = React.createClass({
 					})}
 				</svg>
 			</div>
-			<Headers />
+			<Headers data={headers} />
 			<div className="clear"></div>
 		</div>;
 	}

@@ -9,6 +9,7 @@
 		{
 			"name": "ISP",
 			"image": "isp.png",
+			"hidden": true
 		},
 		{
 			"name": "Internet",
@@ -28,6 +29,7 @@
 		{
 			"name": "Storage",
 			"image": "storage.png",
+			"hidden": true
 		}
 	],
 	"steps": [
@@ -43,14 +45,26 @@
 			"start": 6,
 			"end": 5,
 			"label": "query DB",
-			"duration": 50
+			"duration": 50,
+			"headers": [
+				{
+					"key": "cache-control",
+					"value": "private, max-age=0, no-cache"
+				}
+			]
 		},
 		{
 			"row": 2,
 			"start": 5,
 			"end": 4,
 			"label": "render page",
-			"duration": 20
+			"duration": 20,
+			"headers": [
+				{
+					"key": "something",
+					"value": "else"
+				}
+			]
 		},
 		{
 			"row": 2,

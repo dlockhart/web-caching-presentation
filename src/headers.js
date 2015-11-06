@@ -14,6 +14,17 @@ var headers = React.createClass({
 	},
 	render: function() {
 		return <div ref="headers" className="headers">
+			<h2>Response Headers</h2>
+			<ul>
+			{this.props.data.map(function(h) {
+				var style = {
+					color: h.new ? 'red' : null
+				};
+				return <li key={h.key}>
+					<span style={style}>{h.key}:<br /> {h.value}</span>
+				</li>;
+			})}
+			</ul>
 		</div>;
 	}
 });
