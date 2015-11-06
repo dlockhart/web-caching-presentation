@@ -4,7 +4,7 @@ var Diagram = require('./diagram'),
 	Slide = require('./slide');
 
 var slides = [
-	<Slide centre="true">
+	<Slide type="title">
 		<h1>Web Caching</h1>
 		<h2>Daryl McMillan and Dave Lockhart</h2>
 	</Slide>,
@@ -17,7 +17,7 @@ var slides = [
 	<Slide>
 		<Diagram data={require('./diagrams/diagram2.json')} />
 	</Slide>,
-	<Slide centre="true"><h1>Last Slide</h1></Slide>
+	<Slide type="centre"><h1>Last Slide</h1></Slide>
 ];
 
 var Application = React.createClass({
