@@ -4,7 +4,7 @@ var Diagram = require('./diagram'),
 	Slide = require('./slide');
 
 var slides = [
-	<Slide>
+	<Slide centre="true">
 		<h1>Web Caching</h1>
 		<h2>Daryl McMillan and Dave Lockhart</h2>
 	</Slide>,

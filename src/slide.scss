@@ -1,4 +1,10 @@
 .slide {
-	padding: 10px;
+	width: 100%;
+}
+
+.slide-centre {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 	text-align: center;
 }
