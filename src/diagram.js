@@ -11,7 +11,8 @@ function calculateState(columns) {
 	});
 	return {
 		cols: cols,
-		step: 0
+		step: 0,
+		showDuration: false
 	};
 }
 
@@ -60,11 +61,16 @@ var diagram = React.createClass({
 
 		if (this.state.step < this.props.data.steps.length) {
 			this.setState({step: ++this.state.step});
+			return;
 		}
+
+		this.setState({showDuration: true});
 
 	},
 	prev: function() {
-		if (this.state.step > 0) {
+		if (this.state.showDuration) {
+			this.setState({showDuration: false});
+		} else if (this.state.step > 0) {
 			this.setState({step: --this.state.step});
 		}
 	},
@@ -75,14 +81,24 @@ var diagram = React.createClass({
 		var step = this.state.step;
 
 		var headers = [];
+		var totalDuration = 0;
 		for (var i = 0; i < step; i++) {
-			if (this.props.data.steps[i].headers) {
-				for (var j = 0; j < this.props.data.steps[i].headers.length; j++) {
-					var header = this.props.data.steps[i].headers[j];
+			var s = this.props.data.steps[i];
+			if (s.headers) {
+				for (var j = 0; j < s.headers.length; j++) {
+					var header = s.headers[j];
 					header.new = (step - 1 === i);
 					headers.push(header);
 				}
 			}
+			if (s.duration) {
+				totalDuration += s.duration;
+			}
+		}
+
+		var duration = null;
+		if (this.state.showDuration) {
+			duration = <text x="50%" y="80%" textAnchor="middle">{totalDuration + 'ms'}</text>;
 		}
 
 		return <div className="diagram">
@@ -98,6 +114,7 @@ var diagram = React.createClass({
 						var isVisible = index < step;
 						return <Step key={index} data={s} cols={cols} isVisible={isVisible} />;
 					})}
+					{duration}
 				</svg>
 			</div>
 			<Headers data={headers} />
