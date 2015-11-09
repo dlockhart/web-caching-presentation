@@ -2,23 +2,29 @@
 	"name": "Diagram 2",
 	"columns": [
 		{
-			"name": "Browser",
+			"key": "browser",
+			"label": "Browser",
 		},
 		{
-			"name": "ISP"
+			"key": "isp",
+			"label": "ISP"
 		},
 		{
-			"name": "Internet",
+			"key": "internet",
+			"label": "Internet",
 		},
 		{
-			"name": "App Accelerator",
+			"key": "aa",
+			"label": "App Accelerator",
 			"hidden": true
 		},
 		{
-			"name": "App Server",
+			"key": "server",
+			"label": "App Server",
 		},
 		{
-			"name": "Storage"
+			"key": "storage",
+			"label": "Storage"
 		}
 	],
 	"steps": [

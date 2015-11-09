@@ -64,7 +64,7 @@ var diagram = React.createClass({
 							isVisible = hiddenColIndex < stepNum;
 							hiddenColIndex++;
 						}
-						return <Column key={index} index={index} width={colWidth} name={c.name} image={c.image} hidden={!isVisible} isLast={index === cols - 1} />;
+						return <Column key={c.key} index={index} width={colWidth} data={c} hidden={!isVisible} isLast={index === cols - 1} />;
 					})}
 					<line className="sep" x1="0" y1="120" x2="100%" y2="120" />
 					{this.props.data.steps.map(function(s, index) {
