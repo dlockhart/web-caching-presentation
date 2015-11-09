@@ -30,29 +30,29 @@
 	"steps": [
 		{
 			"row": 1,
-			"start": 1,
-			"end": 6,
+			"start": "browser",
+			"end": "storage",
 			"label": "GET profile.html",
 			"duration": 100
 		},
 		{
 			"row": 2,
-			"start": 6,
-			"end": 5,
+			"start": "storage",
+			"end": "server",
 			"label": "query DB",
 			"duration": 50
 		},
 		{
 			"row": 2,
-			"start": 5,
-			"end": 4,
+			"start": "server",
+			"end": "aa",
 			"label": "render page",
 			"duration": 20
 		},
 		{
 			"row": 2,
-			"start": 4,
-			"end": 1,
+			"start": "aa",
+			"end": "browser",
 			"duration": 20
 		}
 	]

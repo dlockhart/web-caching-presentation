@@ -6,13 +6,15 @@ var step = React.createClass({
 		var data = this.props.data;
 
 		var colWidth = Math.floor(100 / this.props.cols);
-		var dir = data.start < data.end ? 'R' : 'L';
-		var x1 = data.start * colWidth - (colWidth / 2);
-		var x2 = data.end * colWidth - (colWidth / 2);
+		var start = this.props.columnMap[data.start];
+		var end = this.props.columnMap[data.end];
+		var dir = start < end ? 'R' : 'L';
+		var x1 = (start + 1) * colWidth - (colWidth / 2);
+		var x2 = (end + 1) * colWidth - (colWidth / 2);
 
-		if (dir === 'R' && data.end !== this.props.cols) {
+		if (dir === 'R' && end !== this.props.cols - 1) {
 			x1--;
-		} else if (dir === 'L' && data.end !== 1) {
+		} else if (dir === 'L' && end !== 0) {
 			x2++;
 		}
 		var y = (data.row - 1) * 100 + 180;

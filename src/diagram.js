@@ -23,10 +23,14 @@ var diagram = React.createClass({
 		var stepNum = this.props.stepNum;
 
 		var numHiddenCols = 0;
+		var columnMap = {};
+		var columnIndex = 0;
 		this.props.data.columns.forEach(function(c) {
+			columnMap[c.key] = columnIndex;
 			if (c.hidden) {
 				numHiddenCols++;
 			}
+			columnIndex++;
 		});
 
 		var actualStep = stepNum - numHiddenCols;
@@ -69,7 +73,7 @@ var diagram = React.createClass({
 					<line className="sep" x1="0" y1="120" x2="100%" y2="120" />
 					{this.props.data.steps.map(function(s, index) {
 						var isVisible = index < actualStep;
-						return <Step key={index} data={s} cols={cols} isVisible={isVisible} />;
+						return <Step key={index} data={s} columnMap={columnMap} cols={cols} isVisible={isVisible} />;
 					})}
 					{duration}
 				</svg>

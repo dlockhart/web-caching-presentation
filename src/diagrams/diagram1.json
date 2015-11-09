@@ -30,22 +30,22 @@
 	"steps": [
 		{
 			"row": 1,
-			"start": 1,
-			"end": 6,
+			"start": "browser",
+			"end": "storage",
 			"label": "GET /profile",
 			"duration": 50
 		},
 		{
 			"row": 2,
-			"start": 6,
-			"end": 5,
+			"start": "storage",
+			"end": "server",
 			"label": "query DB",
 			"duration": 70
 		},
 		{
 			"row": 2,
-			"start": 5,
-			"end": 4,
+			"start": "server",
+			"end": "internet",
 			"label": "render page",
 			"duration": 100,
 			"headers": [
@@ -57,28 +57,28 @@
 		},
 		{
 			"row": 2,
-			"start": 4,
-			"end": 1,
+			"start": "internet",
+			"end": "browser",
 			"duration": 120
 		},
 		{
 			"row": 3,
-			"start": 1,
-			"end": 6,
+			"start": "browser",
+			"end": "storage",
 			"label": "GET image/",
 			"duration": 50
 		},
 		{
 			"row": 4,
-			"start": 6,
-			"end": 5,
+			"start": "storage",
+			"end": "server",
 			"label": "read disk",
 			"duration": 70
 		},
 		{
 			"row": 4,
-			"start": 4,
-			"end": 1,
+			"start": "internet",
+			"end": "browser",
 			"duration": 400
 		}
 	]
