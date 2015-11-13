@@ -29,25 +29,21 @@
 	],
 	"steps": [
 		{
-			"start": "browser",
 			"end": "storage",
 			"label": "GET profile.html",
 			"duration": 100
 		},
 		{
-			"start": "storage",
 			"end": "server",
 			"label": "query DB",
 			"duration": 50
 		},
 		{
-			"start": "server",
 			"end": "aa",
 			"label": "render page",
 			"duration": 20
 		},
 		{
-			"start": "aa",
 			"end": "browser",
 			"duration": 20
 		}

@@ -6,7 +6,7 @@ var step = React.createClass({
 		var data = this.props.data;
 
 		var colWidth = Math.floor(100 / this.props.cols);
-		var start = this.props.columnMap[data.start];
+		var start = this.props.columnMap[this.props.prevCol];
 		var end = this.props.columnMap[data.end];
 		var dir = start < end ? 'R' : 'L';
 		var x1 = (start + 1) * colWidth - (colWidth / 2);

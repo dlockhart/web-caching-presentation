@@ -57,6 +57,7 @@ var diagram = React.createClass({
 
 		var hiddenColIndex = 0;
 		var prevDuration = 0;
+		var prevCol = this.props.data.columns[0].key;
 
 		return <div className="diagram">
 			<div ref="steps" className="steps">
@@ -74,8 +75,9 @@ var diagram = React.createClass({
 					<line className="sep" x1="0" y1="120" x2="100%" y2="120" />
 					{this.props.data.steps.map(function(s, index) {
 						var isVisible = index < actualStep;
-						var step = <Step key={index} data={s} columnMap={columnMap} cols={cols} isVisible={isVisible} prevDuration={prevDuration} />;
+						var step = <Step key={index} data={s} columnMap={columnMap} cols={cols} prevCol={prevCol} isVisible={isVisible} prevDuration={prevDuration} />;
 						prevDuration += (s.duration / 2);
+						prevCol = s.end;
 						return step;
 					})}
 					{duration}
