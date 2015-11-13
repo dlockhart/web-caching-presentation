@@ -21,25 +21,31 @@ var step = React.createClass({
 		};
 
 		var label = null;
+		var duration = null;
 		if (data.label) {
 			var labelX = (x2 - x1) / 2 + x1;
-			label = <text x={labelX + '%'} y={y1 - 14} textAnchor="middle">
+			var labelY = (y2 - y1) / 2 + y1;
+			var labelTextAnchor = 'middle';
+			if (dir === 'R') {
+				labelY = labelY - 14;
+			} else if (dir === 'L') {
+				labelY = labelY - 14;
+			} else {
+				labelX = labelX + 2;
+				labelTextAnchor = 'start';
+			}
+			if (data.duration) {
+				labelY = labelY - 20;
+				duration = <text x={labelX + '%'} y={labelY + 25} textAnchor={labelTextAnchor}>{ data.duration + ' ms'}</text>;
+			}
+			label = <text x={labelX + '%'} y={labelY} textAnchor={labelTextAnchor}>
 				{data.label}
 			</text>;
 		}
 
-		var duration = null;
-		if (data.duration) {
-			var durationX = (x2 - x1) / 2 + x1;
-			duration = <text x={durationX + '%'} y={y1 + 19} textAnchor="middle">
-				{data.duration + ' ms'}
-			</text>;
-		}
-
 		return <g style={style} className="step">
-				{label}
+				{label}{duration}
 				<line ref="line" className={className} x1={x1 + '%'} y1={y1} x2={x2 + '%'} y2={y2} />
-				{duration}
 			</g>;
 
 	}
