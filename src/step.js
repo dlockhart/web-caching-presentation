@@ -12,8 +12,8 @@ var step = React.createClass({
 		var x1 = (start + 1) * colWidth - (colWidth / 2);
 		var x2 = (end + 1) * colWidth - (colWidth / 2);
 
-		var y1 = this.props.prevDuration + 180;
-		var y2 = y1 + (data.duration / 2);
+		var y1 = this.props.prevDuration + 170;
+		var y2 = y1 + (data.duration * this.props.msPixels);
 
 		var className = 'lineArrow' + dir;
 		var style = {

@@ -8,7 +8,7 @@ var column = React.createClass({
 		var name = null;
 		var image = null;
 		if (!this.props.hidden) {
-			name = <text x={centreX} y="100" textAnchor="middle">{this.props.data.label}</text>;
+			name = <text x={centreX} y="95" textAnchor="middle">{this.props.data.label}</text>;
 			image = <g dangerouslySetInnerHTML={{__html: '<image x=' + centreX + ' y=0 width="75" height="75" xlink:href="images/' + this.props.data.key + '.png" transform="translate(-37,0)"/>'}} />;
 		}
 
