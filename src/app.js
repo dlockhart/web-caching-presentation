@@ -9,15 +9,37 @@ var slides = [
 		<h2>Daryl McMillan and Dave Lockhart</h2>
 	</Slide>,
 	<Slide>
-		<Diagram data={require('./diagrams/diagram1.json')} />
+		<Diagram data={require('./diagrams/1-no-caching.json')} />
 	</Slide>,
 	<Slide>
-		<h1>cache-control header</h1>
+		<h1>Application Caching</h1>
 	</Slide>,
 	<Slide>
-		<Diagram data={require('./diagrams/diagram2.json')} />
+		<Diagram data={require('./diagrams/2-app-caching.json')} />
 	</Slide>,
-	<Slide type="centre"><h1>Last Slide</h1></Slide>
+	<Slide>
+		<h1>Output Caching</h1>
+	</Slide>,
+	<Slide>
+		<Diagram data={require('./diagrams/3-output-caching.json')} />
+	</Slide>,
+	<Slide>
+		<h1>If-Modified-Since / Last-Modified Headers</h1>
+	</Slide>,
+	<Slide>
+		<Diagram data={require('./diagrams/4-if-modified-since.json')} />
+	</Slide>,
+	<Slide>
+		<h1>Cache-Control Header</h1>
+		<p>Talk about public vs. private and max-age.</p>
+	</Slide>,
+	<Slide>
+		<h1>CDN</h1>
+		<p>Talk about what a CDN is, advantages, when to use them and the Brightspace CDN.</p>
+	</Slide>,
+	<Slide>
+		<Diagram data={require('./diagrams/5-all-together.json')} />
+	</Slide>,
 ];
 
 var Application = React.createClass({

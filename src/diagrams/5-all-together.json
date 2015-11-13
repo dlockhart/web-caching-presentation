@@ -1,0 +1,69 @@
+{
+	"name": "Attempt 5: CDN",
+	"columns": [
+		{
+			"key": "browser",
+			"label": "Browser"
+		},
+		{
+			"key": "cdn",
+			"label": "CDN",
+			"hidden": true
+		},
+		{
+			"key": "internet",
+			"label": "Internet"
+		},
+		{
+			"key": "server",
+			"label": "App Server"
+		},
+		{
+			"key": "appcache",
+			"label": "App Cache"
+		},
+		{
+			"key": "storage",
+			"label": "Storage"
+		}
+	],
+	"steps": [
+		{
+			"end": "server",
+			"duration": 50,
+			"label": "GET /profile",
+		},
+		{
+			"end": "appcache",
+			"duration": 0
+		},
+		{
+			"end": "appcache",
+			"duration": 10,
+			"label": "retrieve from cache",
+		},
+		{
+			"end": "server",
+			"duration": 0
+		},
+		{
+			"end": "server",
+			"label": "retrieve from output cache",
+			"duration": 10
+		},
+		{
+			"end": "browser",
+			"duration": 150
+		},
+		{
+			"end": "cdn",
+			"label": "GET image/",
+			"duration": 30
+		},
+		{
+			"end": "browser",
+			"duration": 30,
+			"label": "304 Not Modified"
+		}
+	]
+}

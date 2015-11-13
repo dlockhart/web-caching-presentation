@@ -1,0 +1,77 @@
+{
+	"name": "Attempt 4: If-Modified-Since",
+	"columns": [
+		{
+			"key": "browser",
+			"label": "Browser"
+		},
+		{
+			"key": "internet",
+			"label": "Internet"
+		},
+		{
+			"key": "server",
+			"label": "App Server"
+		},
+		{
+			"key": "appcache",
+			"label": "App Cache"
+		},
+		{
+			"key": "storage",
+			"label": "Storage"
+		}
+	],
+	"steps": [
+		{
+			"end": "server",
+			"duration": 50,
+			"label": "GET /profile",
+		},
+		{
+			"end": "appcache",
+			"duration": 0
+		},
+		{
+			"end": "appcache",
+			"duration": 10,
+			"label": "retrieve from cache",
+		},
+		{
+			"end": "server",
+			"duration": 0
+		},
+		{
+			"end": "server",
+			"label": "retrieve from output cache",
+			"duration": 10
+		},
+		{
+			"end": "browser",
+			"duration": 150
+		},
+		{
+			"end": "server",
+			"label": "GET image/",
+			"duration": 50
+		},
+		{
+			"end": "storage",
+			"duration": 0
+		},
+		{
+			"end": "storage",
+			"label": "check last-modified",
+			"duration": 40
+		},
+		{
+			"end": "server",
+			"duration": 0
+		},
+		{
+			"end": "browser",
+			"duration": 50,
+			"label": "304 Not Modified"
+		}
+	]
+}
