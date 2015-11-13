@@ -1,13 +1,14 @@
-.lineArrowR, .lineArrowL {
+.lineArrowR, .lineArrowL, .lineArrowD {
 	fill: none;
 	stroke: #6666ff;
 	stroke-width: 2;
 }
 .lineArrowR {
-	marker-start: url(#markerCircle);
 	marker-end: url(#markerArrowR);
 }
 .lineArrowL {
-	marker-start: url(#markerCircle);
 	marker-end: url(#markerArrowL);
+}
+.lineArrowD {
+	marker-end: url(#markerArrowD);
 }
