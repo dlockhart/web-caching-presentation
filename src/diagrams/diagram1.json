@@ -8,22 +8,22 @@
 		},
 		{
 			"key": "isp",
-			"name": "ISP",
+			"label": "ISP",
 			"hidden": true
 		},
 		{
 			"key": "internet",
-			"name": "Internet",
+			"label": "Internet",
 			"hidden": true
 		},
 		{
 			"key": "server",
-			"name": "App Server",
+			"label": "App Server",
 			"hidden": true
 		},
 		{
 			"key": "storage",
-			"name": "Storage",
+			"label": "Storage",
 			"hidden": true
 		}
 	],
