@@ -1,39 +1,46 @@
-@import 'column.scss';
-@import 'step.scss';
-@import 'headers.scss';
-@import 'markers.scss';
+.diagram {
 
-.steps {
-	float: left;
-	position: relative;
-	width: 80%;
-}
+	@import 'column.scss';
+	@import 'step.scss';
+	@import 'headers.scss';
+	@import 'markers.scss';
 
-h1 {
-	margin: 8px 0 0 0;
-	text-align: center;
-}
+	font-size: 16px;
+	margin: -20px;
 
-svg {
-	height: 100%;
-	position: absolute;
-	top: 60px;
-	left: 0;
-	width: 100%;
-}
+	h1 {
+		margin: 8px 0 0 0;
+		text-align: center;
+	}
 
-line.sep {
-	fill: none;
-	stroke: #eeeeee;
-	stroke-width: 1;
-}
+	svg {
+		height: 100%;
+		position: absolute;
+		top: 60px;
+		left: 0;
+		width: 100%;
+	}
 
-text {
-	font-size: 22px;
-}
+	line.sep {
+		fill: none;
+		stroke: #eeeeee;
+		stroke-width: 1;
+	}
 
-.total {
-	fill: #cc0000;
-	font-size: 30px;
-	font-weight: bold;
+	text {
+		font-size: 22px;
+	}
+
+	.total {
+		fill: #cc0000;
+		font-size: 30px;
+		font-weight: bold;
+	}
+
+	.steps {
+		float: left;
+		position: relative;
+		width: 80%;
+	}
+
 }
