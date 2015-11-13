@@ -12,12 +12,8 @@ var step = React.createClass({
 		var x1 = (start + 1) * colWidth - (colWidth / 2);
 		var x2 = (end + 1) * colWidth - (colWidth / 2);
 
-		if (dir === 'R' && end !== this.props.cols - 1) {
-			x1--;
-		} else if (dir === 'L' && end !== 0) {
-			x2++;
-		}
-		var y = (data.row - 1) * 100 + 180;
+		var y1 = this.props.prevDuration + 180;
+		var y2 = y1 + (data.duration / 2);
 
 		var className = 'lineArrow' + dir;
 		var style = {
@@ -27,7 +23,7 @@ var step = React.createClass({
 		var label = null;
 		if (data.label) {
 			var labelX = (x2 - x1) / 2 + x1;
-			label = <text x={labelX + '%'} y={y - 14} textAnchor="middle">
+			label = <text x={labelX + '%'} y={y1 - 14} textAnchor="middle">
 				{data.label}
 			</text>;
 		}
@@ -35,14 +31,14 @@ var step = React.createClass({
 		var duration = null;
 		if (data.duration) {
 			var durationX = (x2 - x1) / 2 + x1;
-			duration = <text x={durationX + '%'} y={y + 19} textAnchor="middle">
-				{data.duration + 'ms'}
+			duration = <text x={durationX + '%'} y={y1 + 19} textAnchor="middle">
+				{data.duration + ' ms'}
 			</text>;
 		}
 
 		return <g style={style} className="step">
 				{label}
-				<line ref="line" className={className} x1={x1 + '%'} y1={y} x2={x2 + '%'} y2={y} />
+				<line ref="line" className={className} x1={x1 + '%'} y1={y1} x2={x2 + '%'} y2={y2} />
 				{duration}
 			</g>;
 

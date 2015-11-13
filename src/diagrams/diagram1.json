@@ -1,14 +1,9 @@
 {
-	"name": "Diagram 1",
+	"name": "Attempt 1: No Caching",
 	"columns": [
 		{
 			"key": "browser",
 			"label": "Browser",
-			"hidden": true
-		},
-		{
-			"key": "isp",
-			"label": "ISP",
 			"hidden": true
 		},
 		{
@@ -29,23 +24,30 @@
 	],
 	"steps": [
 		{
-			"row": 1,
 			"start": "browser",
-			"end": "storage",
+			"end": "server",
+			"duration": 50,
 			"label": "GET /profile",
-			"duration": 50
 		},
 		{
-			"row": 2,
+			"start": "server",
+			"end": "storage",
+			"duration": 0
+		},
+		{
+			"start": "storage",
+			"end": "storage",
+			"duration": 70,
+			"label": "query DB"
+		},
+		{
 			"start": "storage",
 			"end": "server",
-			"label": "query DB",
-			"duration": 70
+			"duration": 0
 		},
 		{
-			"row": 2,
 			"start": "server",
-			"end": "internet",
+			"end": "server",
 			"label": "render page",
 			"duration": 100,
 			"headers": [
@@ -56,28 +58,29 @@
 			]
 		},
 		{
-			"row": 2,
-			"start": "internet",
+			"start": "server",
 			"end": "browser",
-			"duration": 120
+			"duration": 150
 		},
 		{
-			"row": 3,
 			"start": "browser",
-			"end": "storage",
+			"end": "server",
 			"label": "GET image/",
 			"duration": 50
 		},
 		{
-			"row": 4,
-			"start": "storage",
-			"end": "server",
-			"label": "read disk",
-			"duration": 70
+			"start": "server",
+			"end": "storage",
+			"duration": 0
 		},
 		{
-			"row": 4,
-			"start": "internet",
+			"start": "storage",
+			"end": "storage",
+			"label": "read disk",
+			"duration": 100
+		},
+		{
+			"start": "storage",
 			"end": "browser",
 			"duration": 400
 		}
