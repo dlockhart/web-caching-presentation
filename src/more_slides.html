@@ -1,0 +1,288 @@
+<html>
+<head>
+<title>Slides</title>
+<style>
+div.slide {
+	border-bottom: 1px solid black;
+}
+.reveal2 {
+	visibility: hidden;
+}
+.step1 {
+	visibility: visible;
+}
+.big {
+	font-size: 2em;
+}
+</style>
+<script>
+function shownext( slide ) {
+	var revealNumber;
+	slide.reveal = ( slide.reveal || 0 ) + 1;
+	var items = slide.querySelectorAll( ".reveal" + slide.reveal );
+	console.log( items );
+	for( var i=0; i<items.length; i++  ) {
+		items[i].style.visibility = 'visible';
+	}
+}
+</script>
+</head>
+
+<body onclick="shownext( document.body );">
+
+<!-- application caching -->
+<div class="slide">
+familiar stuff: memcached, redis, etc..
+best value ( expensive queries, frequent queries, read/write ratio )
+implementation:
+</div>
+
+<!-- add caching -->
+<div class="slide">
+<pre class="big">
+<span class="reveal2">
+cache.Get(
+	"profile_{userId}",
+	() =>
+<span class="reveal1">
+		db.Query(
+			@"SELECT
+				UserId,
+				Name,
+				StatusMessage,
+				ProfileImage
+			FROM PROFILES
+			WHERE UserId = {userId}"
+		)
+</span>
+)
+</span>
+</pre>
+</div>
+
+
+<!-- application caching tradeoffs -->
+<div class="slide">
+advantage - external services can be extra expensive ( slow )
+data from multiple queries is big savings, but even harder to invalidate
+if staleness is ok, it is amazing (my profile needs to be fresh.  Others' profile can be stale)
+invalidation can be tricky ( more below )
+not free
+eviction ( cache size vs hit rate )
+best when lots of people see the same data
+can help data tier scale
+</div>
+
+<!-- cache invalidation -->
+<div class="slide">
+<pre>
+<span class="reveal2">cache.Set(
+	"profile_{userId}",
+	() =>
+<span class="reveal1">
+		db.Execute(
+			@"UPDATE PROFILES SET
+				Name = {name},
+				StatusMessage = {statusMessage}
+			WHERE
+				UserId = {userId}"
+		)
+</span>
+)
+</span>
+
+<span class="reveal2">cache.Set(
+	"profile_{userId}",
+	() =>
+<span class="reveal1">
+		db.Execute(
+			@"UPDATE PROFILES SET
+				ProfileImage = {profileImage}
+			WHERE
+				UserId = {userId}"
+		)
+</span>
+)
+</span>
+
+<span class="reveal2">
+cache.Set(
+	id => "profile_{userId}",
+	() =>
+<span class="reveal1">
+		db.Execute(
+			@"INSERT PROFILES (
+				Name,
+				StatusMessage
+			) VALUES (
+				{name},
+				{statusMessage}
+			)"
+		)
+</span>
+)
+</span>
+</pre>
+</div>
+
+<!-- output caching -->
+<div class="slide">
+Expensive to render
+Expensive to query
+Frequently used, infrequently updated
+Invalidation + re-use gets harder ( navbars, welcome message, current date, per-user uniqueness, etc... )
+Invalidation vs versioned keys
+eviction ( cache size vs hit rate )
+best when lots of people see the same data
+</div>
+
+<div class="slide">
+<pre class="big">
+var data = getData()
+return
+<span class="reveal2">
+	cache.Get(
+		"profilepage_{data.userId}_{data.version}"
+		() =>
+<span class="reveal1">
+			renderPage( data )
+</span>
+	)
+</span>
+</pre>
+</div>
+
+<!-- output caching - versioning -->
+<div class="slide">
+<pre>
+db.Execute(
+	@"UPDATE PROFILES SET
+<span class="reveal2">		Version = Version + 1,</span>
+		Name = {name},
+		StatusMessage = {statusMessage}
+	WHERE
+		UserId = {userId}"
+)
+
+db.Execute(
+	@"UPDATE PROFILES SET
+<span class="reveal2">		Version = Version + 1,</span>
+		ProfileImage = {profileImage}
+	WHERE
+		UserId = {userId}"
+)
+
+db.Execute(
+	@"INSERT PROFILES (
+<span class="reveal2">		Version,</span>
+		Name,
+		StatusMessage
+	) VALUES (
+<span class="reveal2">		1,</span>
+		{name},
+		{statusMessage}
+	)"
+)
+</pre>
+</div>
+
+<!-- conditional gets -->
+<div class="slide">
+Files are nice
+Large responses are nice
+Still requires a request + response
+Requires some kind of freshness check ( LastModifed, version, checksum, etc )
+Pages with lots of data can be difficult to validate
+</div>
+
+<!-- conditional gets - big vs small, files vs db -->
+<div class="slide">
+<table>
+	<tr><td>request</td><td></td></tr>
+	<tr><td>data lookup</td><td></td></tr>
+	<tr><td>minimal response</td><td></td></tr>
+	<tr><td>not modified</td><td></td></tr>
+	<tr><td>full response</td><td></td></tr>
+</table>
+</div>
+
+<div class="slide">
+<table>
+	<tr><td>request</td><td></td></tr>
+	<tr><td>metadata lookup</td><td></td></tr>
+	<tr><td>minimal response</td><td></td></tr>
+	<tr><td>not modified</td><td></td></tr>
+	<tr><td>data fetch</td><td></td></tr>
+	<tr><td>data transmit</td><td></td></tr>
+</table>
+</div>
+
+<!-- max-age -->
+<div class="slide">
+Cache-Control Header
+
+Cache-Control: public, <b>max-age=3600</b>
+time in seconds
+in the browser, no validation request, or any request at all
+If staleness is ok, it is great
+</div>
+
+<!-- max-age tradeoffs -->
+<div class="slide">
+Can't expire directly ( cached in the brower )
+New url works ( cache buster, version number, etc )
+Frequently requested, infrequently changing, stale is ok ( public profile image, common javascript libraries, etc )
+Only cached for one user
+</div>
+
+<!-- public/private -->
+<div class="slide">
+Cache-Control: <b>public</b>, max-age=3600
+Controls intermediate caching
+public caches the same content for everyone
+private is only for the browser/user
+
+Can't expire directly ( cached in the brower )
+New url works ( cache buster, version number, etc )
+Frequently requested, infrequently changing, stale is ok ( public profile image, common javascript libraries, etc )
+</div>
+
+<!-- CDN -->
+<div class="slide">
+Lots of geo-distributed static content nodes
+Akamai, CloudFront, CloudFlare
+Netflix?
+</div>
+
+<!-- CDN tradeoffs -->
+<div class="slide">
+clients revalidate is cheaper ( short hop and no load on backend )
+revalidate only to the backend, content from the CDN
+Can push changes, but not always recommended ( AWS push vs request pricing )
+Versioned urls work really well
+Storage is cheap.
+s.brightspace.com -> http://docs.dev.d2l/index.php/Brightspace_CDN
+</div>
+
+<!-- summary -->
+<div class="slide">
+application caching - memcached or similar, wraps data fetches, good for expensive, frequent, and slow calls.  Invalidation can be tricky, unless staleness is ok.
+output caching - similar to application caching.  Even worse for invalidation.  Big win for render time, server load, etc...
+conditional gets - if-modified-since and last-modified headers to allow the browser to keep a copy.  Good for large documents with good version information ( like files on disk )
+max-age - Cache-Control header property that allows browsers and intermediates to keep a copy for a period of time.  Great for versioned resources ( like shared javascript libraries, versioned user files, icons, etc )
+public/private - Cache-Control header property that controls sharing of cached resources.
+CDN - Geo-close copies of data.  Quick for fetch.  Expensive to invalidate.
+</div>
+
+<!-- tips -->
+<div class="slide">
+versioned names and urls are really nice - avoid know urls for large/expensive
+adds complexity: evaluate potential gains ( with data )
+design urls by cacheability: split data and application code ( client-side apps )
+consider user performance and server performance
+</div>
+
+</div>
+
+</body>
+</html>
