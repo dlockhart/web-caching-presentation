@@ -2,7 +2,6 @@
 
 	@import 'column.scss';
 	@import 'step.scss';
-	@import 'headers.scss';
 	@import 'markers.scss';
 
 	font-size: 16px;
@@ -35,12 +34,6 @@
 		fill: #cc0000;
 		font-size: 30px;
 		font-weight: bold;
-	}
-
-	.steps {
-		float: left;
-		position: relative;
-		width: 80%;
 	}
 
 }

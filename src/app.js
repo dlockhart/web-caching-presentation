@@ -47,7 +47,7 @@ var slides = [
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/6-all-together.json')} />
-	</Slide>,
+	</Slide>
 ];
 
 var Application = React.createClass({
