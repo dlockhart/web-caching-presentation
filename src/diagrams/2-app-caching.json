@@ -49,6 +49,7 @@
 		},
 		{
 			"end": "browser",
+			"label": "200 Success",
 			"duration": 150
 		},
 		{
@@ -67,6 +68,7 @@
 		},
 		{
 			"end": "browser",
+			"label": "200 Success",
 			"duration": 400
 		}
 	]
