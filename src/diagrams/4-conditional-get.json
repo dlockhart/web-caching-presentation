@@ -1,5 +1,5 @@
 {
-	"name": "Attempt 4: If-Modified-Since",
+	"name": "Attempt 4: Conditional GET",
 	"columns": [
 		{
 			"key": "browser",
