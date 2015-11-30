@@ -29,10 +29,10 @@ var slides = [
 		<Diagram data={require('./diagrams/3-output-caching.json')} />
 	</Slide>,
 	<Slide>
-		<h1>If-Modified-Since / Last-Modified Headers</h1>
+		<h1>Conditional GET</h1>
 	</Slide>,
 	<Slide>
-		<Diagram data={require('./diagrams/4-if-modified-since.json')} />
+		<Diagram data={require('./diagrams/4-conditional-get.json')} />
 	</Slide>,
 	<Slide>
 		<h1>Cache-Control Header</h1>
