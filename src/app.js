@@ -1,12 +1,17 @@
 var Diagram = require('./diagram'),
 	React = require('react'), // eslint-disable-line no-unused-vars
 	ReactDOM = require('react-dom'),
-	Slide = require('./slide');
+	Slide = require('./slide'),
+	Step = require('./slide-step');
 
 var slides = [
 	<Slide type="title">
-		<h1>Web Caching</h1>
-		<h2>Daryl McMillan and Dave Lockhart</h2>
+		<Step>
+			<h1>Web Caching</h1>
+		</Step>
+		<Step>
+			<h2>Daryl McMillan and Dave Lockhart</h2>
+		</Step>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/1-no-caching.json')} />

@@ -13,3 +13,12 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+.slide-step {
+	opacity: 0;
+	transition: opacity 0.3s ease-in;
+}
+
+.slide-step-visible {
+	opacity: 1;
+}
