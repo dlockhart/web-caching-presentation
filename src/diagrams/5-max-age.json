@@ -1,0 +1,54 @@
+{
+	"name": "Attempt 5: Cache-Control: public, max-age=3600",
+	"columns": [
+		{
+			"key": "browser",
+			"label": "Browser"
+		},
+		{
+			"key": "internet",
+			"label": "Internet"
+		},
+		{
+			"key": "server",
+			"label": "App Server"
+		},
+		{
+			"key": "appcache",
+			"label": "App Cache"
+		},
+		{
+			"key": "storage",
+			"label": "Storage"
+		}
+	],
+	"steps": [
+		{
+			"end": "server",
+			"duration": 50,
+			"label": "GET /profile",
+		},
+		{
+			"end": "appcache",
+			"duration": 0
+		},
+		{
+			"end": "appcache",
+			"duration": 10,
+			"label": "retrieve from cache",
+		},
+		{
+			"end": "server",
+			"duration": 0
+		},
+		{
+			"end": "server",
+			"label": "retrieve from output cache",
+			"duration": 10
+		},
+		{
+			"end": "browser",
+			"duration": 150
+		}
+	]
+}

@@ -34,11 +34,14 @@ var slides = [
 		<p>Talk about public vs. private and max-age.</p>
 	</Slide>,
 	<Slide>
+		<Diagram data={require('./diagrams/5-max-age.json')} />
+	</Slide>,
+	<Slide>
 		<h1>CDN</h1>
 		<p>Talk about what a CDN is, advantages, when to use them and the Brightspace CDN.</p>
 	</Slide>,
 	<Slide>
-		<Diagram data={require('./diagrams/5-all-together.json')} />
+		<Diagram data={require('./diagrams/6-all-together.json')} />
 	</Slide>,
 ];
 
