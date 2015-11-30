@@ -44,13 +44,7 @@
 		{
 			"end": "server",
 			"label": "render page",
-			"duration": 100,
-			"headers": [
-				{
-					"key": "cache-control",
-					"value": "private, max-age=0, no-cache"
-				}
-			]
+			"duration": 100
 		},
 		{
 			"end": "browser",
