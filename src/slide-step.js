@@ -8,7 +8,8 @@ module.exports = React.createClass({
 		this.myStepNum = this.context.getStepNum();
 	},
 	render: function() {
-		var className = (this.myStepNum <= this.props.stepNum) ? 'slide-step slide-step-visible' : 'slide-step';
+		var myStep = this.props.step || this.myStepNum;
+		var className = (myStep <= this.props.stepNum) ? 'slide-step slide-step-visible' : 'slide-step';
 		return <div className={className}>{this.props.children}</div>;
 	}
 });
