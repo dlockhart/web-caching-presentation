@@ -46,16 +46,25 @@ var slides = [
 		<Diagram data={require('./diagrams/2-app-caching.json')} />
 	</Slide>,
 	<Slide>
+		<h1>Application Caching Tradeoffs</h1>
+	</Slide>,
+	<Slide>
 		<h1>Output Caching</h1>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/3-output-caching.json')} />
 	</Slide>,
 	<Slide>
+		<h1>Output Caching Tradeoffs</h1>
+	</Slide>,
+	<Slide>
 		<h1>Conditional GET</h1>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/4-conditional-get.json')} />
+	</Slide>,
+	<Slide>
+		<h1>Conditional GET Tradeoffs</h1>
 	</Slide>,
 	<Slide>
 		<h1>Cache-Control Header</h1>
@@ -65,11 +74,17 @@ var slides = [
 		<Diagram data={require('./diagrams/5-max-age.json')} />
 	</Slide>,
 	<Slide>
+		<h1>Cache-Control Header Tradeoffs</h1>
+	</Slide>,
+	<Slide>
 		<h1>CDN</h1>
 		<p>Talk about what a CDN is, advantages, when to use them and the Brightspace CDN.</p>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/6-all-together.json')} />
+	</Slide>,
+	<Slide>
+		<h1>CDN Tradeoffs</h1>
 	</Slide>,
 	<Slide>
 		<h1>Summary</h1>
