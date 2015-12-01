@@ -119,9 +119,11 @@ var slides = [
 	</Slide>,
 	<Slide>
 		<h1>Application Caching Tradeoffs</h1>
-		<Step step={1}>Speed vs Freshness</Step>
-		<Step step={2}>Speed vs Complexity</Step>
-		<Step step={3}>Hits vs Misses</Step>
+		<ul>
+			<li>Speed vs Freshness</li>
+			<li>Speed vs Complexity</li>
+			<li>Hits vs Misses</li>
+		</ul>
 	</Slide>,
 	<Slide>
 		<h1>Output Caching</h1>
@@ -191,35 +193,74 @@ var slides = [
 	</Slide>,
 	<Slide>
 		<h1>Output Caching Tradeoffs</h1>
+		<ul>
+			<li>Huge performance gains</li>
+			<li>Personalization is harder</li>
+			<li>Invalidation can get complicated</li>
+		</ul>
 	</Slide>,
 	<Slide>
 		<h1>Conditional GET</h1>
+		<Step>
+			<h2>Request</h2>
+			<pre className="box">
+				GET /myprofile HTTP/1.1
+				Host: profiles.d2ldev.com
+				<strong>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT</strong>
+			</pre>
+		</Step>
+		<Step>
+			<h2>Response</h2>
+			<pre className="box">
+				<strong>HTTP/1.1 304 Not Modified</strong>
+			</pre>
+		</Step>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/4-conditional-get.json')} />
 	</Slide>,
 	<Slide>
 		<h1>Conditional GET Tradeoffs</h1>
+		<ul>
+			<li>Needs metadata</li>
+			<li>Still doing a round-trip</li>
+			<li>Biggest wins for large responses</li>
+		</ul>
 	</Slide>,
 	<Slide>
-		<h1>Cache-Control Header</h1>
-		<p>Talk about public vs. private and max-age.</p>
+		<h2>Cache-Control Header</h2>
+		<pre className="box">
+			Cache-Control: <strong>public</strong>, max-age=3600
+
+			Cache-Control: <strong>private</strong>, max-age=3600
+
+			Cache-Control: public, <strong>max-age=3600</strong>
+		</pre>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/5-max-age.json')} />
 	</Slide>,
 	<Slide>
 		<h1>Cache-Control Header Tradeoffs</h1>
+		<ul>
+			<li>No request at all</li>
+			<li>Amazing for never-changing resources</li>
+			<li>No direct expiration</li>
+		</ul>
 	</Slide>,
 	<Slide>
 		<h1>CDN</h1>
-		<p>Talk about what a CDN is, advantages, when to use them and the Brightspace CDN.</p>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/6-all-together.json')} />
 	</Slide>,
 	<Slide>
 		<h1>CDN Tradeoffs</h1>
+		<ul>
+			<li>Fast</li>
+			<li>Controllable</li>
+			<li><a href="http://docs.dev.d2l/index.php/Brightspace_CDN">s.brightspace.com</a></li>
+		</ul>
 	</Slide>,
 	<Slide>
 		<h1>Summary</h1>

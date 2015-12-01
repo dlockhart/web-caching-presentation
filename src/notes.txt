@@ -49,7 +49,72 @@ version in key
 - quick peek at data gives us freshness
 could still cache at data layer
 look at data or not
+track data version
 
 (output caching diagram)
-saves render time
+
+(tradeoffs)
+Super-fast
+Server can still make decisions
+personalization is harder
+- best gains when everyone sees the same thing
+Lots of data, lots of sources = tough invalidation
+
+(conditional get + example)
+
+(conditional get sequence)
+
+(tradeoffs)
+needs metadata
+- version/last modified on data is helpful
+- files usually have last modified
+- combining data for generated content can be tricky
+round trip
+- tiny responses aren't amazing
+- big files are pretty good
+
+cached for one user vs everyone?
+
+(cache-control)
+public/private - allow intermediates to cache vs not
+max-age - cache duration in seconds
+
+(max-age diagram)
+
+(max-age tradeoffs)
+no request at all
+never-changing is great
+- url per app version
+- new image urls, not overwrites
+no direct expiration
+- can't change the resouce
+- must change the reference
+amazing for javascript libraries
+other resources for client-side applications
+
+(cdn)
+Akamai, CloudFront, CloudFlare
+lots of computers
+geo-close
+fast networks
+static only or static+proxy
+Netflix
+
+(cdn diagram)
+
+(cdn tradeoffs)
+Fast
+- close to everybody
+- freshness checks are quick
+- downloads are quick
+- hardware is fast
+- significant offloading for backend
+- inside the SSL - can cache for everyone
+Control
+- revalidate can hit origin servers
+- security checks can hit origin servers
+- can invalidate documents
+- sometimes expensive ( talk to lots of servers all over the world )
+new resource names is best
+We have one
 
