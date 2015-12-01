@@ -55,8 +55,7 @@ var slides = [
 		<Step step={1}><pre className="newstuff">
 		{'cache.Get(\n'}
 		{'	"profile_{userId}",\n'}
-		{'	() =>\n'}
-		</pre></Step><pre className="oldstuff">
+		{'	() =>\n'}</pre></Step><pre className="oldstuff">
 		{'		db.Query(\n'}
 		{'			@"SELECT\n'}
 		{'				UserId,\n'}
@@ -65,8 +64,7 @@ var slides = [
 		{'				ProfileImage\n'}
 		{'			FROM PROFILES\n'}
 		{'			WHERE UserId = {userId}"\n'}
-		{'		)\n'}
-		</pre><Step step={1}><pre className="newstuff">
+		{'		)\n'}</pre><Step step={1}><pre className="newstuff">
 		{')\n'}
 		</pre></Step>
 	</Slide>,
@@ -80,37 +78,32 @@ var slides = [
 		<Step step={1}><pre className="newstuff smalltext">
 		{'cache.Set(\n'}
 		{'	"profile_{userId}",\n'}
-		{'	() =>\n'}
-		</pre></Step><pre className="oldstuff smalltext">
+		{'	() =>\n'}</pre></Step><pre className="oldstuff smalltext">
 		{'		db.Execute(\n'}
 		{'			@"UPDATE PROFILES SET\n'}
 		{'				Name = {name},\n'}
 		{'				StatusMessage = {statusMessage}\n'}
 		{'			WHERE\n'}
 		{'				UserId = {userId}"\n'}
-		{'		)\n'}
-		</pre><Step step={1}><pre className="newstuff smalltext">
-		{')\n'}
-		</pre></Step>
+		{'		)\n'}</pre><Step step={1}><pre className="newstuff smalltext">
+		{')\n'}</pre></Step>
+
 		<Step step={2}><pre className="newstuff smalltext">
 		{'cache.Set(\n'}
 		{'	"profile_{userId}",\n'}
-		{'	() =>\n'}
-		</pre></Step><pre className="oldstuff smalltext">
+		{'	() =>\n'}</pre></Step><pre className="oldstuff smalltext">
 		{'		db.Execute(\n'}
 		{'			@"UPDATE PROFILES SET\n'}
 		{'				ProfileImage = {profileImage}\n'}
 		{'			WHERE\n'}
 		{'				UserId = {userId}\n'}
-		{'		)\n'}
-		</pre><Step step={2}><pre className="newstuff smalltext">
-		{')\n'}
-		</pre></Step>
+		{'		)\n'}</pre><Step step={2}><pre className="newstuff smalltext">
+		{')\n'}</pre></Step>
+		
 		<Step step={3}><pre className="newstuff smalltext">
 		{'cache.Set(\n'}
 		{'	id => "profile_{id}",\n'}
-		{'	() =>\n'}
-		</pre></Step><pre className="oldstuff smalltext">
+		{'	() =>\n'}</pre></Step><pre className="oldstuff smalltext">
 		{'		db.Execute(\n'}
 		{'			@"INSERT PROFILES (\n'}
 		{'				Name,\n'}
@@ -125,7 +118,73 @@ var slides = [
 		</pre></Step>
 	</Slide>,
 	<Slide>
+		<h1>Application Caching Tradeoffs</h1>
+		<Step step={1}>Speed vs Freshness</Step>
+		<Step step={2}>Speed vs Complexity</Step>
+		<Step step={3}>Hits vs Misses</Step>
+	</Slide>,
+	<Slide>
 		<h1>Output Caching</h1>
+	</Slide>,
+	<Slide>
+		<pre className="oldstuff">
+		{'var data = getData()\n'}
+		{'return\n'}</pre><Step step={1}><pre className="newstuff">
+		{'	cache.Get(\n'}
+		{'		"profilepage_{data.userId}_{data.version}",\n'}
+		{'		() =>\n'}</pre></Step><pre className="oldstuff">
+		{'			renderPage( data )\n'}</pre><Step step={1}><pre className="newstuff">
+		{'	)\n'}
+		</pre></Step>
+	</Slide>,
+	<Slide>
+
+		<pre className="oldstuff smalltext">
+		{'db.Execute(\n'}
+		{'	@"UPDATE PROFILES SET\n'}</pre>
+		<Step step={1}><pre className="newstuff smalltext">
+		{'		Version = Version + 1,\n'}
+		</pre></Step>
+		<pre className="oldstuff smalltext">
+		{'		Name = {name},\n'}
+		{'		StatusMessage = {statusMessage}\n'}
+		{'	WHERE\n'}
+		{'		UserId = {userId}\n'}
+		</pre>
+
+
+		<pre className="oldstuff smalltext">
+		{'db.Execute(\n'}
+		{'	@"UPDATE PROFILES SET\n'}</pre>
+		<Step step={2}><pre className="newstuff smalltext">
+		{'		Version = Version + 1,\n'}
+		</pre></Step>
+		<pre className="oldstuff smalltext">
+		{'		ProfileImage = {profileImage}\n'}
+		{'	WHERE\n'}
+		{'		UserId = {userId}\n'}
+		</pre>
+
+
+		<pre className="oldstuff smalltext">
+		{'db.Execute(\n'}
+		{'	@"INSERT PROFILES (\n'}</pre>
+		<Step step={3}><pre className="newstuff smalltext">
+		{'		Version,\n'}
+		</pre></Step>
+		<pre className="oldstuff smalltext">
+		{'		Name,\n'}
+		{'		StatusMessage\n'}
+		{'	) VALUES (\n'}</pre>
+		<Step step={3}><pre className="newstuff smalltext">
+		{'		1,\n'}
+		</pre></Step>
+		<pre className="oldstuff smalltext">
+		{'		{name},\n'}
+		{'		{statusMessage}\n'}
+		{'	)\n'}
+		</pre>
+
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/3-output-caching.json')} />

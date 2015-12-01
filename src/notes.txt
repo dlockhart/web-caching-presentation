@@ -1,19 +1,55 @@
-DB query first
+(Intro)
 
-Lots of solutions, popular ones: Memcached, Redis, ElastiCache ( Amazon )
+(Http headers)
+
+(Simple web request)
+
+Look at DB query first
+
+Caching:
+Lots of solutions
+Memcached, Redis, ElastiCache ( Amazon )
 Check cache before reads
 Fetch and write on misses
 
 Simple code example
 Just wrap a cache check around the database call
 
+(web request with application caching)
+
 Saved some time, took some load off the DB, but it's not all wins.
 
 "Cache Invalidation"
 
-Maybe stale data is ok
+Stale is ok sometimes:
+My Profile vs Dave's Profile
 
 Otherwise...
 
+(Code)
 Update the data, update the cache
+
+sacrifice Freshness
+- stale data is easy
+
+sacrifice Complexity
+- cache evicition can be tricky
+- get all the places
+
+read/write ratio matters
+- more reads than writes is super-important
+
+(Output Caching)
+cache fully rendered content
+
+(code)
+
+quick cache check before render
+version in key
+- quick peek at data gives us freshness
+could still cache at data layer
+look at data or not
+
+(output caching diagram)
+saves render time
 
