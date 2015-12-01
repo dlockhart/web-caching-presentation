@@ -6,12 +6,8 @@ var Diagram = require('./diagram'),
 
 var slides = [
 	<Slide type="title">
-		<Step>
-			<h1>Web Caching</h1>
-		</Step>
-		<Step>
-			<em>Daryl McMillan and Dave Lockhart</em>
-		</Step>
+		<h1>Web Caching</h1>
+		<em>Daryl McMillan and Dave Lockhart</em>
 	</Slide>,
 	<Slide>
 		<h1>HTTP Headers Review</h1>
