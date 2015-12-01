@@ -1,0 +1,19 @@
+DB query first
+
+Lots of solutions, popular ones: Memcached, Redis, ElastiCache ( Amazon )
+Check cache before reads
+Fetch and write on misses
+
+Simple code example
+Just wrap a cache check around the database call
+
+Saved some time, took some load off the DB, but it's not all wins.
+
+"Cache Invalidation"
+
+Maybe stale data is ok
+
+Otherwise...
+
+Update the data, update the cache
+

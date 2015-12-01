@@ -44,12 +44,85 @@ var slides = [
 	</Slide>,
 	<Slide>
 		<h1>Application Caching</h1>
+		<ul>
+			<li>Memcached, Redis, ElastiCache</li>
+			<li>Before fetching data, check the cache</li>
+			<li>After fetching data, write to the cache</li>
+		</ul>
+		<Step>test</Step>
+	</Slide>,
+	<Slide>
+		<Step step={1}><pre className="newstuff">
+		{'cache.Get(\n'}
+		{'	"profile_{userId}",\n'}
+		{'	() =>\n'}
+		</pre></Step><pre className="oldstuff">
+		{'		db.Query(\n'}
+		{'			@"SELECT\n'}
+		{'				UserId,\n'}
+		{'				Name,\n'}
+		{'				StatusMessage,\n'}
+		{'				ProfileImage\n'}
+		{'			FROM PROFILES\n'}
+		{'			WHERE UserId = {userId}"\n'}
+		{'		)\n'}
+		</pre><Step step={1}><pre className="newstuff">
+		{')\n'}
+		</pre></Step>
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/2-app-caching.json')} />
 	</Slide>,
 	<Slide>
-		<h1>Application Caching Tradeoffs</h1>
+		<h1>Cache Invalidation</h1>
+	</Slide>,
+	<Slide>
+		<Step step={1}><pre className="newstuff smalltext">
+		{'cache.Set(\n'}
+		{'	"profile_{userId}",\n'}
+		{'	() =>\n'}
+		</pre></Step><pre className="oldstuff smalltext">
+		{'		db.Execute(\n'}
+		{'			@"UPDATE PROFILES SET\n'}
+		{'				Name = {name},\n'}
+		{'				StatusMessage = {statusMessage}\n'}
+		{'			WHERE\n'}
+		{'				UserId = {userId}"\n'}
+		{'		)\n'}
+		</pre><Step step={1}><pre className="newstuff smalltext">
+		{')\n'}
+		</pre></Step>
+		<Step step={2}><pre className="newstuff smalltext">
+		{'cache.Set(\n'}
+		{'	"profile_{userId}",\n'}
+		{'	() =>\n'}
+		</pre></Step><pre className="oldstuff smalltext">
+		{'		db.Execute(\n'}
+		{'			@"UPDATE PROFILES SET\n'}
+		{'				ProfileImage = {profileImage}\n'}
+		{'			WHERE\n'}
+		{'				UserId = {userId}\n'}
+		{'		)\n'}
+		</pre><Step step={2}><pre className="newstuff smalltext">
+		{')\n'}
+		</pre></Step>
+		<Step step={3}><pre className="newstuff smalltext">
+		{'cache.Set(\n'}
+		{'	id => "profile_{id}",\n'}
+		{'	() =>\n'}
+		</pre></Step><pre className="oldstuff smalltext">
+		{'		db.Execute(\n'}
+		{'			@"INSERT PROFILES (\n'}
+		{'				Name,\n'}
+		{'				StatusMessage\n'}
+		{'			) VALUES (\n'}
+		{'				{name},\n'}
+		{'				{statusMessage}\n'}
+		{'			)"\n'}
+		{'		)\n'}
+		</pre><Step step={3}><pre className="newstuff smalltext">
+		{')\n'}
+		</pre></Step>
 	</Slide>,
 	<Slide>
 		<h1>Output Caching</h1>
