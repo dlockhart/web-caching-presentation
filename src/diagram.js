@@ -35,10 +35,15 @@ var diagram = React.createClass({
 
 		var actualStep = stepNum - numHiddenCols;
 		var totalDuration = 0;
+		var totalX = 0;
 		for (var i = 0; i < this.props.data.steps.length; i++) {
-			totalDuration += this.props.data.steps[i].duration;
+			var d = this.props.data.steps[i].duration;
+			totalDuration += d;
+			if (d > 0) {
+				totalX += Math.max(this.props.data.steps[i].duration, 50);
+			}
 		}
-		var msPixels = (height / totalDuration);
+		var msPixels = (height / totalX);
 
 		var duration = null;
 		if (actualStep > this.props.data.steps.length) {
@@ -65,7 +70,8 @@ var diagram = React.createClass({
 				{this.props.data.steps.map(function(s, index) {
 					var isVisible = index < actualStep;
 					var step = <Step key={index} data={s} columnMap={columnMap} cols={cols} prevCol={prevCol} isVisible={isVisible} prevDuration={prevDuration} msPixels={msPixels} />;
-					prevDuration += (s.duration * msPixels);
+					var pd = s.duration > 0 ? Math.max(s.duration, 50) : 0;
+					prevDuration += (pd * msPixels);
 					prevCol = s.end;
 					return step;
 				})}
