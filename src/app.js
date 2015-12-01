@@ -204,8 +204,8 @@ var slides = [
 		<Step>
 			<h2>Request</h2>
 			<pre className="box">
-				GET /myprofile HTTP/1.1
-				Host: profiles.d2ldev.com
+				GET /myprofile HTTP/1.1<br/>
+				Host: profiles.d2ldev.com<br/>
 				<strong>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT</strong>
 			</pre>
 		</Step>
@@ -230,9 +230,9 @@ var slides = [
 	<Slide>
 		<h2>Cache-Control Header</h2>
 		<pre className="box">
-			Cache-Control: <strong>public</strong>, max-age=3600
+			Cache-Control: <strong>public</strong>, max-age=3600<br/><br/>
 
-			Cache-Control: <strong>private</strong>, max-age=3600
+			Cache-Control: <strong>private</strong>, max-age=3600<br/><br/>
 
 			Cache-Control: public, <strong>max-age=3600</strong>
 		</pre>
@@ -258,21 +258,29 @@ var slides = [
 		<h1>CDN Tradeoffs</h1>
 		<ul>
 			<li>Fast</li>
+			<li>Close</li>
 			<li>Controllable</li>
 			<li><a href="http://docs.dev.d2l/index.php/Brightspace_CDN">s.brightspace.com</a></li>
 		</ul>
 	</Slide>,
 	<Slide>
 		<h1>Summary</h1>
-		<p>
-			List out a bullet of each thing learned.
-		</p>
+		<ul>
+			<li>Application Caching - Offloading from database, great for expensive lookups</li>
+			<li>Output Caching - Worse for invalidation, Better for performance</li>
+			<li>Conditional GET - Great for large resources that have metadata</li>
+			<li>max-age - Great for shared resources that never change</li>
+			<li>CDN - Big acceleration for things that don't change much</li>
+		</ul>
 	</Slide>,
 	<Slide>
 		<h1>Tips</h1>
-		<p>
-			List out some additional tips.
-		</p>
+		<ul>
+			<li>Avoid invalidation with new resource names</li>
+			<li>Caching adds complexity, be sure to evaluate</li>
+			<li>Design endpoints for cacheablility</li>
+			<li>Consider both user and server performance</li>
+		</ul>
 	</Slide>,
 	<Slide type="title">
 		<h1>Questions?</h1>

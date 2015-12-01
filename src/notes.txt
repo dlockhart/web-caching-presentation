@@ -118,3 +118,34 @@ Control
 new resource names is best
 We have one
 
+(summary)
+Application Caching
+- Offloading from database
+- great for expensive lookups
+Output Caching
+- hard to invalidate
+- really good performance
+Conditional GET
+- Great for large resources that have metadata
+- Files are great
+max-age
+- Great for shared resources that never change
+- javascript/application files/images
+CDN
+- Big acceleration for things that don't change much
+- javascript, application files, large user files
+
+(tips)
+New resource names help a lot
+- completely avoid invalidation
+Caching adds complexity, be sure to evaluate
+Design endpoints for cacheablility
+- split data and app
+- myprofile vs other profile
+- organization data vs user data
+Consider both user and server performance
+- user files might not help server performance, but can be great
+- cache miss vs hit experience
+- data freshness matters
+
+(questions)
