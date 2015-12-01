@@ -12,19 +12,11 @@ function initMarker(ref, width, height, refX, refY, orient) {
 
 module.exports = React.createClass({
 	componentDidMount: function() {
-		initMarker(this.refs.markerArrowR, 12, 12, 2, 6, 0);
-		initMarker(this.refs.markerArrowL, 12, 12, 2, 6, 180);
-		initMarker(this.refs.markerArrowD, 12, 12, 2, 6, 90);
+		initMarker(this.refs.markerArrow, 12, 12, 2, 6, 'auto');
 	},
 	render: function() {
 		return <defs>
-			<marker id="markerArrowR" ref="markerArrowR">
-				<path d="M2,2 L2,10 L10,6 L2,2" className="arrow" />
-			</marker>
-			<marker id="markerArrowL" ref="markerArrowL">
-				<path d="M2,2 L2,10 L10,6 L2,2" className="arrow" />
-			</marker>
-			<marker id="markerArrowD" ref="markerArrowD">
+			<marker id="markerArrow" ref="markerArrow">
 				<path d="M2,2 L2,10 L10,6 L2,2" className="arrow" />
 			</marker>
 		</defs>;

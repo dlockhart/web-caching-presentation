@@ -1,14 +1,6 @@
-.lineArrowR, .lineArrowL, .lineArrowD {
+.lineArrow {
 	fill: none;
+	marker-end: url(#markerArrow);
 	stroke: #6666ff;
 	stroke-width: 2;
-}
-.lineArrowR {
-	marker-end: url(#markerArrowR);
-}
-.lineArrowL {
-	marker-end: url(#markerArrowL);
-}
-.lineArrowD {
-	marker-end: url(#markerArrowD);
 }
