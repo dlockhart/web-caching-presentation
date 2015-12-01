@@ -13,14 +13,13 @@ var step = React.createClass({
 		var x2 = (end + 1) * colWidth - (colWidth / 2);
 
 		var y1 = this.props.prevDuration + 170;
-		var y2 = y1 + (data.duration * this.props.msPixels);
+		var y2 = y1 + ((data.duration > 0 ? Math.max(data.duration, 50) : 0) * this.props.msPixels);
 
 		var style = {
 			display: this.props.isVisible ? 'inline' : 'none'
 		};
 
-		var label = null;
-		var duration = null;
+		var labelText = data.label || '';
 		if (data.label) {
 			var labelX = (x2 - x1) / 2 + x1;
 			var labelY = (y2 - y1) / 2 + y1;
@@ -30,20 +29,17 @@ var step = React.createClass({
 			} else if (dir === 'L') {
 				labelY = labelY - 14;
 			} else {
-				labelX = labelX + 2;
+				labelX = labelX + 20;
+				labelY = labelY + 14;
 				labelTextAnchor = 'start';
 			}
-			if (data.duration) {
-				labelY = labelY - 20;
-				duration = <text x={labelX + 'px'} y={labelY + 25} textAnchor={labelTextAnchor}>{ data.duration + ' ms'}</text>;
-			}
-			label = <text x={labelX + 'px'} y={labelY} textAnchor={labelTextAnchor}>
-				{data.label}
-			</text>;
+		}
+		if (data.duration) {
+			labelText += ' (' + data.duration + 'ms)';
 		}
 
 		return <g style={style} className="step">
-				{label}{duration}
+				<text x={labelX + 'px'} y={labelY} textAnchor={labelTextAnchor}>{labelText}</text>
 				<path d={'M' + x1 + ',' + y1 + 'L' + x2 + ',' + y2} className="lineArrow" />
 			</g>;
 

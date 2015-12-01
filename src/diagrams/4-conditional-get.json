@@ -62,7 +62,7 @@
 		},
 		{
 			"end": "storage",
-			"label": "check last-modified",
+			"label": "metadata",
 			"duration": 40
 		},
 		{
