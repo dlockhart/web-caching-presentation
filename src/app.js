@@ -12,6 +12,9 @@ var slides = [
 			<img className="profile" src="images/daryl.jpg" />
 			<img className="profile" src="images/dave.jpg" />
 		</div>
+		<Step step="1">
+			<img className="unleashed" src="images/unleashed.png" />
+		</Step>
 	</Slide>,
 	<Slide>
 		<h1>HTTP Headers Review</h1>
