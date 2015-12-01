@@ -9,10 +9,12 @@ module.exports = React.createClass({
 		}
 		var index = -1;
 		return <div className={className}>
+			<div className="slide-padding">
 			{React.Children.map(this.props.children, function(child) {
 				index++;
 				return React.cloneElement(child, {stepNum: stepNum, stepIndex: index});
 			})}
+			</div>
 		</div>;
 	}
 });

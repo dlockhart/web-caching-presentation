@@ -8,6 +8,16 @@ body {
 	overflow: hidden;
 }
 
+h1 {
+	text-align: center;
+}
+
 .clear {
 	clear: both;
+}
+
+pre.box {
+	background-color: #eeeeee;
+	border: 1px dashed #999999;
+	padding: 10px;
 }
