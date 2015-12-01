@@ -8,6 +8,10 @@ var slides = [
 	<Slide type="title">
 		<h1>Web Caching</h1>
 		<em>Daryl McMillan and Dave Lockhart</em>
+		<div>
+			<img className="profile" src="images/daryl.jpg" />
+			<img className="profile" src="images/dave.jpg" />
+		</div>
 	</Slide>,
 	<Slide>
 		<h1>HTTP Headers Review</h1>
