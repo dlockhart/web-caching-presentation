@@ -10,7 +10,30 @@ var slides = [
 			<h1>Web Caching</h1>
 		</Step>
 		<Step>
-			<h2>Daryl McMillan and Dave Lockhart</h2>
+			<em>Daryl McMillan and Dave Lockhart</em>
+		</Step>
+	</Slide>,
+	<Slide>
+		<h1>HTTP Headers Review</h1>
+		<Step>
+			<h2>Request</h2>
+			<pre className="box">
+				<strong>Accept:</strong> text/html,application/xhtml+xml,application/xml;<br />
+				<strong>Accept-Encoding:</strong> gzip, deflate, sdch<br />
+				<strong>Accept-Language:</strong> en-US,en;q=0.8,fr;q=0.6<br />
+				<strong>Cookie:</strong> blah blah<br />
+				<strong>Host:</strong> developer.mozilla.org<br />
+				<strong>User-Agent:</strong> Mozilla/5.0 (Macintosh; AppleWebKit/537.36
+			</pre>
+		</Step>
+		<Step>
+			<h2>Response</h2>
+			<pre className="box">
+				<strong>Content-Encoding:</strong> gzip<br />
+				<strong>Content-Type:</strong> text/html; charset=utf-8<br />
+				<strong>Date:</strong> Tue, 01 Dec 2015 01:50:49 GMT<br />
+				<strong>Last-Modified:</strong> Tue, 17 Nov 2015 20:41:07 GMT<br />
+			</pre>
 		</Step>
 	</Slide>,
 	<Slide>
