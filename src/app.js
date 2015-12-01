@@ -70,6 +70,21 @@ var slides = [
 	</Slide>,
 	<Slide>
 		<Diagram data={require('./diagrams/6-all-together.json')} />
+	</Slide>,
+	<Slide>
+		<h1>Summary</h1>
+		<p>
+			List out a bullet of each thing learned.
+		</p>
+	</Slide>,
+	<Slide>
+		<h1>Tips</h1>
+		<p>
+			List out some additional tips.
+		</p>
+	</Slide>,
+	<Slide type="title">
+		<h1>Questions?</h1>
 	</Slide>
 ];
 
