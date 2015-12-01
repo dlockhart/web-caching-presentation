@@ -14,11 +14,11 @@
 	transform: translateY(-50%);
 }
 
-.slide-step {
+.slide-step-hidden {
 	opacity: 0;
-	transition: opacity 0.3s ease-in;
 }
 
 .slide-step-visible {
 	opacity: 1;
+	transition: opacity 0.3s ease-in;
 }
